@@ -13,5 +13,22 @@ public class BooksFromFile {
         // test your method here
 
     }
+    
+    
+    public static List<Book> readBooks(String file){
+        List<Book> res = new ArrayList<>();
+        try {            
+            Files.lines(Paths.get(file))
+                    .forEach(x -> res.add(lineToBook(x)));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return res; 
+    }
+    
+    public static Book lineToBook(String row){
+        String[] book = row.split(",");                
+        return new Book(book[0], Integer.parseInt(book[1]), Integer.parseInt(book[2]), book[3]);
+    }
 
 }
