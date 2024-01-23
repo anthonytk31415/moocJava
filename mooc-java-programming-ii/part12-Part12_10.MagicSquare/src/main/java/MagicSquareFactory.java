@@ -24,7 +24,6 @@ public class MagicSquareFactory {
             j = v; 
             k += 1; 
         }
-        // implement the creation of a magic square with the Siamese method algorithm here
         return square;
     }
     
