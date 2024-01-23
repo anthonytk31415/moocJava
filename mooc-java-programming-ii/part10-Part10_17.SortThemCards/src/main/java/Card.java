@@ -1,6 +1,6 @@
+import java.util.Comparator;
 
-
-public class Card {
+public class Card implements Comparable <Card>{
 
     private int value;
     private Suit suit;
@@ -36,6 +36,18 @@ public class Card {
 
     public Suit getSuit() {
         return suit;
+    }
+    
+    
+    public Comparator<Card> cardComparator = Comparator
+          .comparing((Card x) -> x.getValue())
+          .thenComparing(x -> x.getSuit());
+        
+ 
+    
+    @Override
+    public int compareTo(Card otherCard){
+        return this.cardComparator.compare(this, otherCard);
     }
 
 }

@@ -10,6 +10,7 @@
  */
 import java.util.List; 
 import java.util.ArrayList; 
+import java.util.Iterator;
 
 public class Employees {
     private ArrayList<Person> employees; 
@@ -33,8 +34,21 @@ public class Employees {
     }
     
     public void print(Education education){
-        this.employees.stream()
-                .filter(x -> x.getEducation().equals(education))
-                .forEach(person -> System.out.println(person));
+        Iterator<Person> iterator = this.employees.iterator();
+        while (iterator.hasNext()){
+            Person curNext = iterator.next(); 
+            if (curNext.getEducation().equals(education)){
+                System.out.println(curNext); 
+            }
+        }
+    }
+    
+    public void fire(Education education){
+        Iterator<Person> iterator = this.employees.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next().getEducation().equals(education)){
+                iterator.remove(); 
+            }
+        }
     }
 }
